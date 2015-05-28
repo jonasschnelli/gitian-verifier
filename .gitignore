@@ -26,3 +26,15 @@
 *.exe
 *.out
 *.app
+autom4te.cache
+config.status
+config.log
+aclocal.m4
+.DS_Store
+src/.deps
+Makefile.in
+Makefile
+libtool
+configure
+src/gitian-verifier
+src/config/stamp-h1
