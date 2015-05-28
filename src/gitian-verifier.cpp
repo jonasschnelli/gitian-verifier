@@ -10,6 +10,9 @@
 #include <stdio.h>
 #include "tinyformat.h"
 
+#include <QApplication>
+#include <QPushButton>
+
 std::string data; //will hold the url's contents
 
 size_t writeCallback(char* buf, size_t size, size_t nmemb, void* up)
@@ -33,7 +36,7 @@ std::string HelpMessageCli()
 int main(int argc, char* argv[])
 {
 	ParseParameters(argc, argv);
-    if (argc<2 || mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
+    if (mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
         std::string strUsage = _("Gitian-Verifier version") + " " + FormatFullVersion() + "\n";
         if (!mapArgs.count("-version")) {
             strUsage += "\n" + _("Usage:") + "\n" +
@@ -69,4 +72,12 @@ int main(int argc, char* argv[])
 
     curl_easy_cleanup(curl);
     curl_global_cleanup();
+
+    //Start QT Part
+    QApplication app (argc, argv);
+
+    QPushButton button ("Hello world !");
+    button.show();
+
+    return app.exec();
 }
